@@ -4,6 +4,7 @@
 import Button from '@/components/Button';
 import Container from '@/components/Container';
 import Heading from '@/components/Heading';
+import ImageUpload from '@/components/ImageUpload';
 import Input from '@/components/Input';
 import React, { useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
@@ -35,6 +36,12 @@ const ProductUploadPage = () => {
         }
     });
 
+    const imageSrc = watch('imageSrc');
+
+    const setCustomValue = (id: string, value: any) => {
+        setValue(id, value);
+    }
+
     return (
         <Container>
             <div className='max-w-screen-lg mx-auto'>
@@ -44,7 +51,9 @@ const ProductUploadPage = () => {
                         title="Product Upload"
                         subtitle="upload your product"
                     />
-                    {/* Image Upload */}
+                    <ImageUpload
+                        onChange={(value) => setCustomValue('imageSrc', value)} value={imageSrc}
+                    />
                     <hr />
 
                     <Input
@@ -96,8 +105,6 @@ overflow-y-auto
                 </form>
 
             </div>
-
-
 
         </Container>
     )
