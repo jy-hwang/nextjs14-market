@@ -25,7 +25,10 @@ const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <div className='relative w-full'>
-      {formatPrice && <span className='absolute text-neutral-700 top-5 left-2'>₩</span>}
+      {formatPrice && (
+        <span className='absolute text-neutral-700 top-5 left-2'>₩</span>
+      )}
+
       <input
         id={id}
         disabled={disabled}
@@ -59,7 +62,7 @@ transform
 top-5
 z-10
 origin-[0]
-${formatPrice ? 'left-0' : 'left-4'}
+${formatPrice ? 'left-9' : 'left-4'}
 peer-placeholder-shown:scale-100
 peer-placeholder-shown:translate-y-0
 peer-focus:scale-75
