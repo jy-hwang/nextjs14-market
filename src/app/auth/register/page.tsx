@@ -6,11 +6,11 @@ import axios from 'axios';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { useRouter} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FieldValues> = async (body) => {

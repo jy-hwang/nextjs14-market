@@ -17,19 +17,19 @@ const Login = () => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const onSubmit: SubmitHandler<FieldValues> = async (body) => {
     setIsLoading(true);
     try {
       const data = await signIn('credentials', body);
-      console.log('onSubmit data : ',data);
+      console.log('onSubmit data : ', data);
     } catch (error) {
       console.error(error);
     } finally {
       setIsLoading(false);
     }
   };
-  
+
   return (
     <section className='grid h-[calc(100vh_-_56px)} place-items-center'>
       <form

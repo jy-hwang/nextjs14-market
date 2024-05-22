@@ -22,62 +22,62 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        email: { label: 'Email', type: 'text'},
+        email: { label: 'Email', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials, req) {
 
-      if(!credentials?.email || !credentials?.password){
-        throw new Error('Invalid credentials or no input');
-      }
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error('Invalid credentials or no input');
+        }
 
-      const user = await prisma.user.findUnique({
-        where :{ email : credentials.email}
-      });
+        const user = await prisma.user.findUnique({
+          where: { email: credentials.email }
+        });
 
-      console.log('=============================');
-      
-      if(!user || !user?.hashedPassword){
-        throw new Error('Invalid credentials or no email');
-      }
+        console.log('=============================');
 
-      const isCorrectPassword = await bcrypt.compare(
-        credentials.password, user.hashedPassword
-      );
+        if (!user || !user?.hashedPassword) {
+          throw new Error('Invalid credentials or no email');
+        }
 
-      if(!isCorrectPassword){
-        throw new Error('Invalid credentials or wrong password');
-      }
+        const isCorrectPassword = await bcrypt.compare(
+          credentials.password, user.hashedPassword
+        );
 
-      return user;
+        if (!isCorrectPassword) {
+          throw new Error('Invalid credentials or wrong password');
+        }
 
-    },
+        return user;
+
+      },
     }),
     // ...add more providers here
   ],
-  // pages:{
-  //   signIn : '/auth/login'
-  // },
+  pages: {
+    signIn: '/auth/login'
+  },
   session: {
     strategy: 'jwt',
-     maxAge: 30 * 24 * 60 * 1,
-     updateAge: 24 * 60 * 1,
-     generateSessionToken: () => {
-       return randomUUID?.() ?? randomBytes(32).toString('hex');
-     },
+    maxAge: 30 * 24 * 60 * 1,
+    updateAge: 24 * 60 * 1,
+    generateSessionToken: () => {
+      return randomUUID?.() ?? randomBytes(32).toString('hex');
+    },
   },
   jwt: {
     secret: process.env.JWT_SECRET,
     maxAge: 30 * 24 * 60 * 1,
   },
   callbacks: {
-     async jwt({ token, user }) {
-       return { ...token, ...user };
-     },
-     async session({ session, token }) {
-       session.user = token;
-       return session;
-     },
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
+    async session({ session, token }) {
+      session.user = token;
+      return session;
+    },
   },
 };
 
