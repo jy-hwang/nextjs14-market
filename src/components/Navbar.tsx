@@ -12,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className='relative z-10 w-full text-white bg-orange-500'>
+    <nav className='relative z-10 w-full text-white bg-blue-500'>
       <div className='flex items-center justify-between mx-5 sm:mx-10 lg:mx-20'>
         {/* logo */}
         <div className='flex items-center text-2xl h-14'>
