@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import getProducts, { ProductsParams } from '../actions/getProducts';
 import getCurrentUser from '../actions/getCurrentUser';
 import Container from '@/components/Container';
@@ -18,19 +17,16 @@ export default async function Home({ searchParams }: HomeProps) {
 
   console.log(products);
 
-
   return (
     <Container>
       {/* Category */}
 
-      {
-        products?.data.length === 0
-          ?
-          <EmptyState showReset />
-
-          :
-          <>
-            <div className='
+      {products?.data.length === 0
+        ?
+        <EmptyState showReset />
+        :
+        <>
+          <div className='
 grid
 grid-cols-1
 gap-8
@@ -41,21 +37,18 @@ lg:grid-cols-4
 xl:grid-cols-5
 2xl:grid-cols-6
 '>
+            {products?.data.map((product) => (
+              <ProductCard
+                currentUser={currentUser}
+                key={product.id}
+                data={product}
+              />
+            ))}
+          </div>
+          {/* Pagination */}
 
-
-              {products.data.map((product) => (
-                <ProductCard
-                  currentUser={currentUser}
-                  key={product.id}
-                  data={product}
-                />
-              ))}
-            </div>
-            {/* Pagination */}
-
-            {/* FloatingButton */}
-            <FloatingButton href="/products/upload">+</FloatingButton>
-          </>
+          <FloatingButton href="/products/upload">+</FloatingButton>
+        </>
 
       }
     </Container>
