@@ -16,7 +16,7 @@ export async function middleware(req: NextRequest) {
   const session = await getToken({ req, secret: process.env.JWT_SECRET });
   const pathname = req.nextUrl.pathname;
 
-  console.log("middleware pathname : ", pathname, ",  session : ", session);
+  //console.log("middleware pathname : ", pathname, ",  session : ", session);
 
   // 정규식을 이용한 정적파일(css, js 등)과 이미지, favicon.ico 등을 미들웨어 제외처리
   const staticFilePattern = /\.(.*)$/;//경로의 끝이 파일 확장자로 끝나는지를 확인
