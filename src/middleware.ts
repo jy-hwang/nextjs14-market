@@ -3,14 +3,14 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export { default } from 'next-auth/middleware';
 
-export const config = {
-  matcher: [
-    //'/admin/:path*',
-    //'/user',
-    //'/((?!api|_next/static|_next/image|favicon.ico).*)',
-    // 모든 API 경로 , 정적파일경로(_next/static), 이미지 경로(_next/image) , favicon.ico 제외
-  ]
-};
+//export const config = {
+//  matcher: [
+//'/admin/:path*',
+//'/user',
+//'/((?!api|_next/static|_next/image|favicon.ico).*)',
+// 모든 API 경로 , 정적파일경로(_next/static), 이미지 경로(_next/image) , favicon.ico 제외
+//  ]
+//};
 
 export async function middleware(req: NextRequest) {
   const session = await getToken({ req, secret: process.env.JWT_SECRET });
