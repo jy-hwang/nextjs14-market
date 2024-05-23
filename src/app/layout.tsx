@@ -5,8 +5,9 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import { SessionProvider } from 'next-auth/react';
+import Script from 'next/script';
 
-const inter = Inter({ subsets: ['latin'] });
+// const inter = Inter({ subsets: ['latin'] });
 
 // export const metadata: Metadata = {
 //   title: 'Create Next App',
@@ -18,12 +19,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang='en'>
       <body>
         <SessionProvider>
           <Navbar />
-          <div>{children}</div>
+          {children}
+
+          <Script
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1d7e86a934a744bd0f2971fa2b7dc1ff&libraries=services,clusterer&autoload=false"
+          />
         </SessionProvider>
       </body>
     </html>
