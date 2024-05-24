@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Script from 'next/script';
 import getCurrentUser from './actions/getCurrentUser';
+import ToastProvider from '@/components/ToastProvider';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -20,6 +21,8 @@ export default async function RootLayout({
     <html lang='en'>
       <body>
         <Navbar currentUser={currentUser} />
+        <ToastProvider />
+
         {children}
 
         <Script
