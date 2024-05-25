@@ -1,3 +1,4 @@
+import { PRODUCT_PER_PAGE } from "@/types/constants";
 
 export interface ProductsParams {
     latitude?: number;
@@ -15,6 +16,7 @@ export default async function getProducts(
             latitude,
             longitude,
             category,
+            skip,
         } = params;
 
         let query: any = {};
@@ -47,6 +49,8 @@ export default async function getProducts(
             orderBy: {
                 createdAt: 'desc',
             },
+            skip: skip? Number(skip) : 0,
+            take : PRODUCT_PER_PAGE
         })
 
         return {
