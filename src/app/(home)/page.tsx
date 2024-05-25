@@ -5,12 +5,20 @@ import ProductCard from '@/components/ProductCard';
 import FloatingButton from '@/components/FloatingButton';
 import EmptyState from '@/components/EmptyState';
 import Categories from '@/components/categories/Categories';
+import Pagination from '@/components/Pagination';
+import { PRODUCT_PER_PAGE } from '@/types/constants';
 
 interface HomeProps {
   searchParams: ProductsParams
 };
 
 export default async function Home({ searchParams }: HomeProps) {
+
+  const page = searchParams?.page;
+  const pageNum = typeof page ==='string' ? Number(page) : 1;
+
+  console.log('page : ' , page , ', pageNum : ', pageNum);
+
   const products = await getProducts(searchParams);
   const currentUser = await getCurrentUser();
 
@@ -46,7 +54,8 @@ xl:grid-cols-5
               />
             ))}
           </div>
-          {/* Pagination */}
+
+          <Pagination page={pageNum} totalItems={products.totalItems} perPage={PRODUCT_PER_PAGE}/>
 
           <FloatingButton href="/products/upload">+</FloatingButton>
         </>
