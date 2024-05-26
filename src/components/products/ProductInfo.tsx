@@ -12,7 +12,8 @@ createdAt: Date,
 category: {
     icon: IconType,
     label:string,
-    description: string
+    descrption: string
+    
 } | undefined;
 
 }
@@ -39,7 +40,7 @@ const ProductInfo = ({
             <ProductCategory
                 icon={category.icon}
                 label={category.label}
-                description={category.description}
+                description={category.descrption}
             />}
 
         <hr />

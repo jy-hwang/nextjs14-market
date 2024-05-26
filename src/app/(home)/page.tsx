@@ -1,7 +1,7 @@
 import getProducts, { ProductsParams } from '../actions/getProducts';
 import getCurrentUser from '../actions/getCurrentUser';
 import Container from '@/components/Container';
-import ProductCard from '@/components/ProductCard';
+import ProductCard from '@/components/products/ProductCard';
 import FloatingButton from '@/components/FloatingButton';
 import EmptyState from '@/components/EmptyState';
 import Categories from '@/components/categories/Categories';

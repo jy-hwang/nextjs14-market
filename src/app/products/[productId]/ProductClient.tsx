@@ -38,16 +38,16 @@ const ProductClient = ({ product,currentUser }: ProductClientProps) => {
                     />
                     <div className='grid grid-cols-1 mt-6 md:grid-cols-2 md:gap-10'>
                         <ProductInfo
-                            user={product.user}
+                            user={product!.user}
                             category={category}
-                            createdAt={product.createdAt}
-                            description={product?.description}
+                            createdAt={product!.createdAt}
+                            descrption={product!.description}
                         />
                         <div>
                             <KakaoMap
                                 detailPage
-                                latitude={product?.latitude}
-                                longitude={product?.longitude}
+                                latitude={product!.latitude}
+                                longitude={product!.longitude}
                             />
                         </div>    
                     </div>
