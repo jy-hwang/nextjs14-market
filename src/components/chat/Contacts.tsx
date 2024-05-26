@@ -48,7 +48,7 @@ const Contacts = ({
                                 setLayout(true);
                             }}
                         >
-                        {/* <User user={user} currentUserId={currentUser?.id} /> */}
+                        <User user={user} currentUserId={currentUser?.id} />
 
                         </div>
                     )

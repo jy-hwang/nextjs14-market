@@ -6,6 +6,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import useSWR from 'swr';
 import Contacts from '@/components/chat/Contacts'
+import Chat from '@/components/chat/Chat';
 
 interface ChatClientProps{
     currentUser ?: User | null;
@@ -24,7 +25,7 @@ const ChatClient = ({ currentUser }:ChatClientProps) => {
     const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
     const { data:users, error, isLoading} = useSWR('/api/chat', fetcher,{
-        refreshInterval: 2000
+        //refreshInterval: 2000
     })
 
     const currentUserWithMessage = users?.find((user:TUserWithChat) => user.email === currentUser?.email)
@@ -38,7 +39,8 @@ const ChatClient = ({ currentUser }:ChatClientProps) => {
 
             <div className='grid grid-cols-[1fr] md:grid-cols-[300px_1fr]'>
 
-            <section className={`md:flex ${!layout && 'hidden'}`}>
+            <section className={`md:flex `}>
+                {/* ${!layout && 'hidden'} */}
                 <Contacts
                     users={users}
                     currentUser={currentUserWithMessage}
@@ -47,8 +49,13 @@ const ChatClient = ({ currentUser }:ChatClientProps) => {
                 />
             </section>
 
-            <section className={`md:flex ${!layout && 'hidden'}`}>
-            Chat Component
+            <section className={`md:flex `}>
+                {/* ${!layout && 'hidden'} */}
+                <Chat
+                    currentUser={currentUserWithMessage}
+                    receiver={receiver}
+                    setLayout={setLayout}
+                />
             </section>
 
 
