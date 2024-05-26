@@ -49,18 +49,11 @@ const Contacts = ({
                             }}
                         >
                         <User user={user} currentUserId={currentUser?.id} />
-
                         </div>
                     )
                 })
-
         }
-
         </div>
-
-
-
-
     </div>
   )
 }
