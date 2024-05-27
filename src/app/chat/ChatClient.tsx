@@ -8,55 +8,55 @@ import useSWR from 'swr';
 import Contacts from '@/components/chat/Contacts'
 import Chat from '@/components/chat/Chat';
 
-interface ChatClientProps{
-    currentUser ?: User | null;
+interface ChatClientProps {
+    currentUser?: User | null;
 }
 
-const ChatClient = ({ currentUser }:ChatClientProps) => {
-    
+const ChatClient = ({ currentUser }: ChatClientProps) => {
+
     const [receiver, setReceiver] = useState({
         receiverId: "",
         receiverName: "",
-        receiverImage: "",        
+        receiverImage: "",
     })
-    
+
     const [layout, setLayout] = useState(false);
 
     const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
-    const { data:users, error, isLoading} = useSWR('/api/chat', fetcher,{
-        //refreshInterval: 2000
+    const { data: users, error, isLoading } = useSWR('/api/chat', fetcher, {
+        //refreshInterval: 1000
     })
 
-    const currentUserWithMessage = users?.find((user:TUserWithChat) => user.email === currentUser?.email)
+    const currentUserWithMessage = users?.find((user: TUserWithChat) => user.email === currentUser?.email)
 
-    if(isLoading) return <p>Loading...</p>
+    if (isLoading) return <p>Loading...</p>
 
-    if(error) return <p>Error!</p>
+    if (error) return <p>Error!</p>
 
     return (
         <main>
 
             <div className='grid grid-cols-[1fr] md:grid-cols-[300px_1fr]'>
 
-            <section className={`md:flex `}>
-                {/* ${!layout && 'hidden'} */}
-                <Contacts
-                    users={users}
-                    currentUser={currentUserWithMessage}
-                    setLayout={setLayout}
-                    setReceiver={setReceiver}
-                />
-            </section>
+                <section className={`md:flex `}>
+                    {/* ${!layout && 'hidden'} */}
+                    <Contacts
+                        users={users}
+                        currentUser={currentUserWithMessage}
+                        setLayout={setLayout}
+                        setReceiver={setReceiver}
+                    />
+                </section>
 
-            <section className={`md:flex `}>
-                {/* ${!layout && 'hidden'} */}
-                <Chat
-                    currentUser={currentUserWithMessage}
-                    receiver={receiver}
-                    setLayout={setLayout}
-                />
-            </section>
+                <section className={`md:flex `}>
+                    {/* ${!layout && 'hidden'} */}
+                    <Chat
+                        currentUser={currentUserWithMessage}
+                        receiver={receiver}
+                        setLayout={setLayout}
+                    />
+                </section>
 
 
             </div>

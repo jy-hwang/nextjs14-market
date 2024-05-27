@@ -1,8 +1,9 @@
 import { TConversation, TUserWithChat } from '@/types'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Input from './Input';
 import ChatHeader from './ChatHeader';
 import { User } from '@prisma/client';
+import Message from './Message';
 
 interface ChatProps {
     currentUser: TUserWithChat;
@@ -33,6 +34,18 @@ const Chat = ({
         .filter((message) => message.receiverId === currentUser.id)
         .slice(-1)[0]?.createdAt;
 
+    const messageEndRef = useRef<HTMLDivElement | null>(null);
+
+    const scrollToBottom = () => {
+        messageEndRef?.current?.scrollIntoView({
+            behavior: 'smooth',
+        });
+    }
+
+    useEffect(() => {
+        scrollToBottom();
+    });
+
     return (
         <div className='w-full'>
             <div>
@@ -43,8 +56,24 @@ const Chat = ({
                     lastMessageTime={lastMessageTime}
                 />
             </div>
-            <div className='flex flex-col gap-8 p-4 overflow-hidden h-[calc(100vh_-_60px_-_70px_-_80px)]'>
-                {/* chat message */}
+            <div className='flex flex-col gap-8 p-4 overflow-auto h-[calc(100vh_-_60px_-_70px_-_80px)]'>
+                {conversation &&
+                    conversation.messages
+                        .map((message) => {
+                            return (
+                                <Message
+                                    key={message.id}
+                                    isSender={message.senderId === currentUser.id}
+                                    messageText={message.text}
+                                    messageImage={message.image}
+                                    receiverName={receiver.receiverName}
+                                    receiverImage={receiver.receiverImage}
+                                    senderImage={currentUser?.image}
+                                    time={message.createdAt}
+                                />
+                            )
+                        })}
+                <div>{messageEndRef}</div>
             </div>
             <div>
                 <Input
