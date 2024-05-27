@@ -25,7 +25,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
         onChange(result.info.secure_url);
     }
 
-    const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET; 
+    const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
 
     return (
         <CldUploadWidget
