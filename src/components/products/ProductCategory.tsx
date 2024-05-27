@@ -1,13 +1,13 @@
 import React from 'react'
 import { IconType } from 'react-icons';
 
-interface ProductCategoryProps{
+interface ProductCategoryProps {
     icon: IconType,
     label: string,
     description: string;
 }
 
-const ProductCategory = ({icon:Icon,label, description}:ProductCategoryProps) => {
+const ProductCategory = ({ icon: Icon, label, description }: ProductCategoryProps) => {
     return (
         <div>
             <div className='flex flex-row items-center gap-4'>

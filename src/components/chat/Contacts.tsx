@@ -2,7 +2,7 @@ import { TUserWithChat } from '@/types'
 import React from 'react'
 import User from './User';
 
-interface ContactsProps{
+interface ContactsProps {
     users: TUserWithChat[];
     currentUser: TUserWithChat;
     setLayout: (layout: boolean) => void;
@@ -28,34 +28,34 @@ const Contacts = ({
             receiverImage: userImage || "",
         })
     }
-    
-  return (
-    <div className='w-full overflow-auto h-[calc(100vh_-_56px)] border-[1px]'>
-        <h1 className='m-4 text-2xl font-semibold'>Chat</h1>
 
-        <hr />
+    return (
+        <div className='w-full overflow-auto h-[calc(100vh_-_56px)] border-[1px]'>
+            <h1 className='m-4 text-2xl font-semibold'>Chat</h1>
 
-        <div className='flex flex-col'>
-        {users.length > 0 &&
-            users
-                .filter((user) => user.id !== currentUser?.id)
-                .map((user) => {
-                    return (
-                        <div
-                            key={user.id}
-                            onClick={() => {
-                                filterMessages(user.id, user.name, user.image,);
-                                setLayout(true);
-                            }}
-                        >
-                        <User user={user} currentUserId={currentUser?.id} />
-                        </div>
-                    )
-                })
-        }
+            <hr />
+
+            <div className='flex flex-col'>
+                {users.length > 0 &&
+                    users
+                        .filter((user) => user.id !== currentUser?.id)
+                        .map((user) => {
+                            return (
+                                <div
+                                    key={user.id}
+                                    onClick={() => {
+                                        filterMessages(user.id, user.name, user.image,);
+                                        setLayout(true);
+                                    }}
+                                >
+                                    <User user={user} currentUserId={currentUser?.id} />
+                                </div>
+                            )
+                        })
+                }
+            </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default Contacts

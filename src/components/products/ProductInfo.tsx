@@ -5,17 +5,15 @@ import Avatar from '../Avatar';
 import ProductCategory from './ProductCategory';
 import { formatTime } from '@/helpers/dayjs';
 
-interface ProductInfoProps{
-user: User,
-descrption: string,
-createdAt: Date,
-category: {
-    icon: IconType,
-    label:string,
-    descrption: string
-    
-} | undefined;
-
+interface ProductInfoProps {
+    user: User,
+    description: string,
+    createdAt: Date,
+    category: {
+        icon: IconType,
+        label: string;
+        description: string;
+    } | undefined;
 }
 
 const ProductInfo = ({
@@ -24,31 +22,31 @@ const ProductInfo = ({
     createdAt,
     description
 }: ProductInfoProps) => {
-  return (
-    <div className='flex flex-col gap-4'>
-        <div className='flex flex-col gap-2'>
-            <div className='flex items-center gap-2 text-xl font-semibold'>
-                <Avatar src={user?.image}/>
-                <p>{user?.name}</p>
+    return (
+        <div className='flex flex-col gap-4'>
+            <div className='flex flex-col gap-2'>
+                <div className='flex items-center gap-2 text-xl font-semibold'>
+                    <Avatar src={user?.image} />
+                    <p>{user?.name}</p>
+                </div>
+                <div>
+                    {formatTime(createdAt)}
+                </div>
             </div>
-            <div>
-                {formatTime(createdAt)}
-            </div>
-        </div>
-        <hr />
-        {category &&
-            <ProductCategory
-                icon={category.icon}
-                label={category.label}
-                description={category.descrption}
-            />}
+            <hr />
+            {category &&
+                <ProductCategory
+                    icon={category.icon}
+                    label={category.label}
+                    description={category.description}
+                />}
 
-        <hr />
-        <div>
-            {description}
+            <hr />
+            <div>
+                {description}
+            </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default ProductInfo

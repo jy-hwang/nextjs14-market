@@ -10,12 +10,12 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 
-interface ProductClientProps{
-    product: Product & { user: User} | null;
+interface ProductClientProps {
+    product: Product & { user: User } | null;
     currentUser?: User | null;
 }
 
-const ProductClient = ({ product,currentUser }: ProductClientProps) => {
+const ProductClient = ({ product, currentUser }: ProductClientProps) => {
 
     const router = useRouter();
 
@@ -41,7 +41,7 @@ const ProductClient = ({ product,currentUser }: ProductClientProps) => {
                             user={product!.user}
                             category={category}
                             createdAt={product!.createdAt}
-                            descrption={product!.description}
+                            description={product!.description}
                         />
                         <div>
                             <KakaoMap
@@ -49,18 +49,18 @@ const ProductClient = ({ product,currentUser }: ProductClientProps) => {
                                 latitude={product!.latitude}
                                 longitude={product!.longitude}
                             />
-                        </div>    
+                        </div>
                     </div>
 
                 </div>
                 <div
                     className='mt-10'
                 >
-                <Button
-                    label='이 유저와 채팅하기'
-                    onClick={() => router.push('/chat')}
-                />
-                    
+                    <Button
+                        label='이 유저와 채팅하기'
+                        onClick={() => router.push('/chat')}
+                    />
+
                 </div>
 
             </div>

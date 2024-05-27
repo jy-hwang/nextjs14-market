@@ -57,10 +57,7 @@ export const categories = [
         icon: FaCar,
         description: '디지털 카테고리입니다.'
     },
-
-
 ]
-
 
 const Categories = () => {
     const params = useSearchParams();
