@@ -1,0 +1,19 @@
+{
+  "title": "Monthly Sales Data",
+  "x_axis": "Month",
+  "y_axis": "Sales",
+  "data": [
+    { "month": "January", "sales": 120 },
+    { "month": "February", "sales": 150 },
+    { "month": "March", "sales": 170 },
+    { "month": "April", "sales": 200 },
+    { "month": "May", "sales": 220 },
+    { "month": "June", "sales": 180 },
+    { "month": "July", "sales": 240 },
+    { "month": "August", "sales": 260 },
+    { "month": "September", "sales": 210 },
+    { "month": "October", "sales": 230 },
+    { "month": "November", "sales": 250 },
+    { "month": "December", "sales": 270 }
+  ]
+}
