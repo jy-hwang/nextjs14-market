@@ -1,16 +1,16 @@
-
 import Link from 'next/link';
 import React from 'react';
 
 interface FloatingButtonProps {
-    children: React.ReactNode
-    href: string
+  children: React.ReactNode;
+  href: string;
 }
 
 const FloatingButton = ({ children, href }: FloatingButtonProps) => {
-    return (
-        <Link href={href}
-            className='
+  return (
+    <Link
+      href={href}
+      className="
 fixed
 flex
 items-center
@@ -28,10 +28,11 @@ aspect-square
 bottom-5
 right-5
 w-14
-'>
-            {children}
-        </Link>
-    )
-}
+"
+    >
+      {children}
+    </Link>
+  );
+};
 
-export default FloatingButton
+export default FloatingButton;

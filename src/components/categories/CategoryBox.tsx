@@ -1,25 +1,24 @@
 import Link from 'next/link';
-import React from 'react'
-import { IconType } from 'react-icons'
+import React from 'react';
+import { IconType } from 'react-icons';
 
 interface CategoryBoxProps {
-    icon: IconType;
-    label: string;
-    path: string;
-    selected?: boolean;
-
+  icon: IconType;
+  label: string;
+  path: string;
+  selected?: boolean;
 }
 
 const CategoryBox = ({
-    icon: Icon,
-    label,
-    path,
-    selected
+  icon: Icon,
+  label,
+  path,
+  selected,
 }: CategoryBoxProps) => {
-    return (
-        <Link
-            href={`/?category=${path}`}
-            className={`
+  return (
+    <Link
+      href={`/?category=${path}`}
+      className={`
         flex
         flex-col
         items-center
@@ -34,15 +33,11 @@ const CategoryBox = ({
         ${selected ? 'text-neutral-800' : 'text-neutral-500'}
 
         `}
+    >
+      <Icon size={26} />
+      <div className="text-sm font-medium">{label}</div>
+    </Link>
+  );
+};
 
-
-
-        ><Icon size={26} />
-            <div className='text-sm font-medium'>
-                {label}
-            </div>
-        </Link>
-    )
-}
-
-export default CategoryBox
+export default CategoryBox;

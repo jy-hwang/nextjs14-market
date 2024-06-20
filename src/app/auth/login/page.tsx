@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Button from '@/components/Button';
 import Input from '@/components/Input';
@@ -31,14 +31,15 @@ const Login = () => {
   };
 
   return (
-    <section className='grid h-[calc(100vh_-_56px)} place-items-center'>
+    <section className="grid h-[calc(100vh_-_56px)} place-items-center">
       <form
-        className='flex flex-col justify-center gap-4 min-w-[350px]'
-        onSubmit={handleSubmit(onSubmit)}>
-        <h1 className='text-2xl'>Login</h1>
+        className="flex flex-col justify-center gap-4 min-w-[350px]"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <h1 className="text-2xl">Login</h1>
         <Input
-          id='email'
-          label='Email'
+          id="email"
+          label="Email"
           disabled={isLoading}
           register={register}
           errors={errors}
@@ -46,20 +47,20 @@ const Login = () => {
         />
 
         <Input
-          id='password'
-          label='Password'
-          type='password'
+          id="password"
+          label="Password"
+          type="password"
           disabled={isLoading}
           register={register}
           errors={errors}
           required
         />
-        <Button label='Login'></Button>
+        <Button label="Login"></Button>
 
-        <div className='text-center'>
-          <p className='text-gray-400'>
+        <div className="text-center">
+          <p className="text-gray-400">
             Not a member?{' '}
-            <Link href='/auth/register' className='text-black hover:underline'>
+            <Link href="/auth/register" className="text-black hover:underline">
               Register
             </Link>
           </p>

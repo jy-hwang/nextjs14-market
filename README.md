@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## 사용한 prettier rc 옵션 정리
+
+```log
+  "printWidth": 80,       // 줄 바꿈할 길이
+  "tabWidth": 2,          // 들여쓰기 칸 수
+  "semi": true,           // 세미콜론 강제
+  "singleQuote": true,    // 작은 따옴표 사용을 강제
+  "trailingComma": "all", // 쉼표로 구분된 여러 줄인 구문에서 후행 쉼표를 추가
+  "endOfLine": "lf"       // End of line 방식 : CRLF -> window LF -> linx  LF가 default
+```

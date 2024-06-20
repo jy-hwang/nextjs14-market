@@ -9,15 +9,14 @@ import Pagination from '@/components/Pagination';
 import { PRODUCT_PER_PAGE } from '@/types/constants';
 
 interface HomeProps {
-  searchParams: ProductsParams
-};
+  searchParams: ProductsParams;
+}
 
 export default async function Home({ searchParams }: HomeProps) {
-
   const page = searchParams?.page;
-  const pageNum = typeof page ==='string' ? Number(page) : 1;
+  const pageNum = typeof page === 'string' ? Number(page) : 1;
 
-  console.log('page : ' , page , ', pageNum : ', pageNum);
+  console.log('page : ', page, ', pageNum : ', pageNum);
 
   const products = await getProducts(searchParams);
   const currentUser = await getCurrentUser();
@@ -30,12 +29,12 @@ export default async function Home({ searchParams }: HomeProps) {
     <Container>
       <Categories />
 
-      {products?.data?.length === 0
-        ?
+      {products?.data?.length === 0 ? (
         <EmptyState showReset />
-        :
+      ) : (
         <>
-          <div className='
+          <div
+            className="
 grid
 grid-cols-1
 gap-8
@@ -45,7 +44,8 @@ md:grid-cols-3
 lg:grid-cols-4
 xl:grid-cols-5
 2xl:grid-cols-6
-'>
+"
+          >
             {products?.data?.map((product) => (
               <ProductCard
                 currentUser={currentUser}
@@ -55,12 +55,15 @@ xl:grid-cols-5
             ))}
           </div>
 
-          <Pagination page={pageNum} totalItems={products.totalItems} perPage={PRODUCT_PER_PAGE}/>
+          <Pagination
+            page={pageNum}
+            totalItems={products.totalItems}
+            perPage={PRODUCT_PER_PAGE}
+          />
 
           <FloatingButton href="/products/upload">+</FloatingButton>
         </>
-
-      }
+      )}
     </Container>
   );
 }

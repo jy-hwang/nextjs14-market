@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import React from 'react'
-import { RotatingLines } from 'react-loader-spinner'
+import React from 'react';
+import { RotatingLines } from 'react-loader-spinner';
 
 const Loader = () => {
-
-    return (
-        <div className='
+  return (
+    <div
+      className="
     h-[60vh]
     max-w-6xl
     mx-auto
@@ -16,15 +16,17 @@ const Loader = () => {
     items-center
     justify-center
     py-40
-    '
-        ><RotatingLines
-                strokeColor='grey'
-                strokeWidth='5'
-                animationDuration='0.75'
-                width='30'
-                visible={true}
-            /></div>
-    )
-}
+    "
+    >
+      <RotatingLines
+        strokeColor="grey"
+        strokeWidth="5"
+        animationDuration="0.75"
+        width="30"
+        visible={true}
+      />
+    </div>
+  );
+};
 
-export default Loader
+export default Loader;

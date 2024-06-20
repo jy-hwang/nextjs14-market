@@ -1,11 +1,11 @@
-import { Message, User } from "@prisma/client";
+import { Message, User } from '@prisma/client';
 
 export type TUserWithChat = User & {
-    conversations: TConversation[]
-}
+  conversations: TConversation[];
+};
 
 export type TConversation = {
-    id: string;
-    messages: Message[]
-    users: User[]
-}
+  id: string;
+  messages: Message[];
+  users: User[];
+};

@@ -1,64 +1,64 @@
-import getCurrentUser from "@/app/actions/getCurrentUser";
-import { NextResponse } from "next/server";
+import getCurrentUser from '@/app/actions/getCurrentUser';
+import { NextResponse } from 'next/server';
 
 interface Params {
-    productId?: string;
+  productId?: string;
 }
 
 export async function POST(request: Request, { params }: { params: Params }) {
-    const currentUser = await getCurrentUser();
+  const currentUser = await getCurrentUser();
 
-    if (!currentUser) {
-        return Response.error();
-    }
+  if (!currentUser) {
+    return Response.error();
+  }
 
-    const { productId } = params;
+  const { productId } = params;
 
-    if (!productId || typeof productId !== 'string') {
-        throw new Error("Invalid Product ID");
-    }
+  if (!productId || typeof productId !== 'string') {
+    throw new Error('Invalid Product ID');
+  }
 
-    let favoriteIds = [...currentUser.favoriteIds || []];;
+  let favoriteIds = [...(currentUser.favoriteIds || [])];
 
-    favoriteIds.push(productId);
+  favoriteIds.push(productId);
 
-    const user = await prisma?.user.update({
-        where: {
-            id: currentUser.id
-        },
-        data: {
-            favoriteIds
-        }
-    })
+  const user = await prisma?.user.update({
+    where: {
+      id: currentUser.id,
+    },
+    data: {
+      favoriteIds,
+    },
+  });
 
-    return NextResponse.json(user);
+  return NextResponse.json(user);
 }
 
 export async function DELETE(request: Request, { params }: { params: Params }) {
-    const currentUser = await getCurrentUser();
+  const currentUser = await getCurrentUser();
 
-    if (!currentUser) {
-        return Response.error();
-    }
+  if (!currentUser) {
+    return Response.error();
+  }
 
-    const { productId } = params;
+  const { productId } = params;
 
-    if (!productId || typeof productId !== 'string') {
-        throw new Error("Invalid Product ID");
-    }
+  if (!productId || typeof productId !== 'string') {
+    throw new Error('Invalid Product ID');
+  }
 
-    let favoriteIds = [...currentUser.favoriteIds || []];;
+  let favoriteIds = [...(currentUser.favoriteIds || [])];
 
-    favoriteIds = favoriteIds.filter(id => id !== productId);
+  favoriteIds = favoriteIds.filter((id) => id !== productId);
 
-    const user = await prisma?.user.update({
-        where: {
-            id: currentUser.id
-        },
-        data: {
-            favoriteIds
-        }
-    })
+  const user = await prisma?.user.update({
+    where: {
+      id: currentUser.id,
+    },
+    data: {
+      favoriteIds,
+    },
+  });
 
-    return NextResponse.json(user);
+  return NextResponse.json(user);
 }

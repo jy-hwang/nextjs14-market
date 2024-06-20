@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import prisma from '@/helpers/prismadb';
- 
+
 export async function POST(request: Request) {
   const body = await request.json();
   const { email, name, password } = body;
@@ -13,7 +13,6 @@ export async function POST(request: Request) {
       email,
       name,
       hashedPassword,
-      
     },
   });
   return NextResponse.json(user);

@@ -1,15 +1,11 @@
-'use client'
+'use client';
 
-import React from 'react'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/ReactToastify.css'
+import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/ReactToastify.css';
 
 const ToastProvider = () => {
-  return (
-    <ToastContainer
-      autoClose={2000}
-    />
-  )
-}
+  return <ToastContainer autoClose={2000} />;
+};
 
-export default ToastProvider
+export default ToastProvider;

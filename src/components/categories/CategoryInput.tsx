@@ -1,25 +1,25 @@
-import React from 'react'
-import { IconType } from 'react-icons'
+import React from 'react';
+import { IconType } from 'react-icons';
 
 interface CategoryBoxProps {
-    icon: IconType,
-    label: string,
-    selected?: boolean;
-    path: string;
-    onClick: (value: string) => void;
+  icon: IconType;
+  label: string;
+  selected?: boolean;
+  path: string;
+  onClick: (value: string) => void;
 }
 
 const CategoryInput: React.FC<CategoryBoxProps> = ({
-    icon: Icon,
-    label,
-    selected,
-    onClick,
-    path,
+  icon: Icon,
+  label,
+  selected,
+  onClick,
+  path,
 }) => {
-    return (
-        <div
-            onClick={() => onClick(path)}
-            className={`
+  return (
+    <div
+      onClick={() => onClick(path)}
+      className={`
     rounded-xl
     border-2
     p-4
@@ -31,13 +31,11 @@ const CategoryInput: React.FC<CategoryBoxProps> = ({
     cursor-pointer
     ${selected ? 'border-blue-500' : 'border-neutral-200'}
     `}
-        >
-            <Icon size={30} />
-            <div className='font-semibold'>
-                {label}
-            </div>
-        </div>
-    )
-}
+    >
+      <Icon size={30} />
+      <div className="font-semibold">{label}</div>
+    </div>
+  );
+};
 
-export default CategoryInput
+export default CategoryInput;
